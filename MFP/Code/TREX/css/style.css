@@ -1,0 +1,14 @@
+.dinosaur{
+    background-color: red;
+    bottom:0px;
+    position: absolute;
+    height:60px;
+    width:60px;
+}
+.obstacle{
+    background-color:orange;
+    bottom: 0px;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+}
