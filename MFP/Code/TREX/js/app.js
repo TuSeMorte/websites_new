@@ -2,11 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const dinosaur = document.querySelector('.dinosaur')
     const grid = document.querySelector('.grid')
     const alert = document.getElementById('alert')
+    const newGame = document.getElementById('NewGame')
+    const Score = document.getElementById('Score')
 
     let isJumping = false
     let position = 0
     let gravity = 0.9
     let isGameOver = false
+    let score = 0;
 
     function control(e) {
         if(e.keyCode === 32){
@@ -16,7 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+    function restartGame(){
+        window.location.reload();
+    }
     document.addEventListener('keyup', control)
+    document.addEventListener('click', restartGame)
 
     function jump() {
         let count = 0
@@ -60,16 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
             if(obstaclePosition > 0 && obstaclePosition < 60 && position < 60){
                 clearInterval(timerId)
                 alert.innerHTML = 'Game Over'
+                
                 isGameOver = true
                 while (grid.firstChild){
                     grid.removeChild(grid.lastChild)
                 }
-            }
+            } 
 
             obstaclePosition -=10
             obstacle.style.left = obstaclePosition + 'px'
 
         },20)
+        
         if (!isGameOver) setTimeout(generateObstacles,randomTime)
     }
     generateObstacles() 
